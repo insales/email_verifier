@@ -9,8 +9,8 @@ module EmailVerifier
   if defined?(Rails::Railtie)
     class Railtie < ::Rails::Railtie #:nodoc:
       initializer 'rails-i18n' do |app|
-        I18n.load_path << Dir[File.join(File.expand_path(File.dirname(__FILE__) + '/../locales'), '*.yml')]
-        I18n.load_path.flatten!
+        locale_files = Dir[File.join(File.expand_path(File.dirname(__FILE__) + '/../locales'), '*.yml')]
+        I18n.load_path.push *locale_files
       end
     end
   end
